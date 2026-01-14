@@ -1,6 +1,6 @@
 # Lift Simulation System
 
-A C-based elevator simulation system with support for both single and multiple lift operations. The project demonstrates intelligent lift allocation algorithms, path optimization, and ASCII-based visual UI.
+A C-based elevator simulation system with support for both single and multiple lift operations. The project demonstrates intelligent lift allocation algorithms and path optimization.
 
 ## Table of Contents
 - [Overview](#overview)
@@ -21,7 +21,6 @@ The system includes intelligent features like:
 - Smart lift allocation (nearest lift assignment)
 - Path optimization (sorting destinations for efficient travel)
 - Duplicate destination removal
-- ASCII-based visual animation of lift movement
 
 ## Project Structure
 
@@ -30,11 +29,8 @@ lift/
 ├── single_lift_main.c      # Single lift simulation entry point
 ├── multi_lift_main.c       # Multi lift simulation entry point
 ├── lift_sub_functions.c    # Shared utility functions and algorithms
-├── lift_ui.c              # Visual UI with ASCII art animation
-├── single_lift_main       # Compiled executable (single lift)
-├── multi_lift_main        # Compiled executable (multi lift)
-├── lift_ui                # Compiled executable (UI demo)
-└── lift_ui.exe            # Windows executable
+├── single_lift_main        # Compiled executable (single lift)
+└── multi_lift_main         # Compiled executable (multi lift)
 ```
 
 ## Features
@@ -42,7 +38,7 @@ lift/
 ### Single Lift Mode
 - Single elevator management
 - User input for number of passengers, current floor, and destinations
-- Door open/close animations
+- Door open/close status display
 - Ordinal floor numbering (Ground, 1st, 2nd, 3rd, etc.)
 - Real-time lift position updates
 
@@ -50,8 +46,8 @@ lift/
 - Multiple elevator management (3 lifts: A, B, C)
 - Smart lift allocation algorithm
 - Automatic selection of nearest available lift
-- Visual ASCII UI showing lift movement
-- Real-time animation of:
+- Console output showing lift movement
+- Real-time display of:
   - Lift movement (UP/DOWN)
   - Floor transitions
   - Door operations (Opening/Open/Closing/Closed)
@@ -59,7 +55,6 @@ lift/
 ### Shared Sub-Functions
 - `smart_lift_allocation()` - Allocates the nearest lift to user
 - `smart_managing()` - Optimizes and sorts destination paths
-- `lift_ui()` - ASCII visualization of lift
 - `clear_lines()` - Console animation support
 - `endth()` - Returns ordinal suffix for floor numbers
 - `lift_name()` - Returns lift identifier (A, B, C, D)
@@ -68,7 +63,7 @@ lift/
 
 ### Prerequisites
 - GCC compiler
-- Linux/Unix system (uses `sleep()` and ANSI escape codes)
+- Linux/Unix system (uses `sleep()` function)
 - Terminal with support for ANSI escape sequences
 
 ### Compilation
@@ -79,9 +74,6 @@ gcc single_lift_main.c -o single_lift_main
 
 # Compile Multi Lift
 gcc multi_lift_main.c -o multi_lift_main
-
-# Compile UI Demo
-gcc lift_ui.c -o lift_ui
 ```
 
 ### Execution
@@ -92,9 +84,6 @@ gcc lift_ui.c -o lift_ui
 
 # Run Multi Lift Simulation
 ./multi_lift_main
-
-# Run UI Demo
-./lift_ui
 ```
 
 ## Usage
@@ -118,10 +107,10 @@ Enter destination floor's : 3 5
 
     Lift Allocated  -> A
 
-    [Animated lift moves from floor 0 to 3]
-    [Doors open at floor 3]
-    [Animated lift moves from floor 3 to 5]
-    [Doors open at floor 5]
+    [Lift moves from floor 0 to 3]
+    [Doors status at floor 3]
+    [Lift moves from floor 3 to 5]
+    [Doors status at floor 5]
 ```
 
 ## Architecture
@@ -185,14 +174,6 @@ int smart_managing(int *user_destination_paths, int lift_current_position,
 
 **Time Complexity**: O(m²) where m is the number of destinations
 
-### Visual Animation
-
-The lift UI uses ASCII art to visualize:
-- Lift cabin with floor indicator
-- Movement direction arrows (↑/↓)
-- Door status messages
-- Floor numbering with ordinal suffixes
-
 ## Floor Numbering
 
 The system uses proper ordinal suffixes:
@@ -206,7 +187,7 @@ The system uses proper ordinal suffixes:
 
 Standard C libraries:
 - `<stdio.h>` - Input/output operations
-- `<unistd.h>` - POSIX API (sleep, usleep)
+- `<unistd.h>` - POSIX API (sleep)
 - `<stdlib.h>` - Standard library (abs function)
 
 ## Future Enhancements
@@ -228,9 +209,6 @@ This project is part of C programming practice and learning exercises.
 Created as a C programming exercise demonstrating:
 - Data structures
 - Algorithms
-- File handling concepts
 - System programming
 - User interface design
-
-
 
